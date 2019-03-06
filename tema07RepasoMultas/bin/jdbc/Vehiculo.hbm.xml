@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 07-feb-2019 17:27:07 by Hibernate Tools 5.2.8.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="multas" dynamic-insert="false" dynamic-update="false" mutable="true" name="jdbc.Vehiculo" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="vehiculo">
+        <id name="matricula" type="string">
+            <column length="20" name="matricula"/>
+            <generator class="assigned"/>
+        </id>
+        <many-to-one class="jdbc.Conductor" embed-xml="true" fetch="select" insert="true" name="conductor" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column length="9" name="NIF" not-null="true"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="marca" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="marca" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="modelo" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="modelo" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="cv" optimistic-lock="true" type="int" unique="false">
+            <column name="CV" not-null="true"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="multases" optimistic-lock="true" sort="unsorted" table="multas">
+            <key on-delete="noaction">
+                <column length="20" name="matricula" not-null="true"/>
+            </key>
+            <one-to-many class="jdbc.Multas" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>

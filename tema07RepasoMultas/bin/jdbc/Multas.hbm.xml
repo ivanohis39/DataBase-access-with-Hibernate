@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 07-feb-2019 17:27:07 by Hibernate Tools 5.2.8.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="multas" dynamic-insert="false" dynamic-update="false" mutable="true" name="jdbc.Multas" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="multas">
+        <id name="codmulta" type="int">
+            <column name="codmulta"/>
+            <generator class="assigned"/>
+        </id>
+        <many-to-one class="jdbc.Vehiculo" embed-xml="true" fetch="select" insert="true" name="vehiculo" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column length="20" name="matricula" not-null="true"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="fecha" optimistic-lock="true" type="date" unique="false">
+            <column length="10" name="fecha" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="lugar" optimistic-lock="true" type="string" unique="false">
+            <column length="200" name="lugar" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="tipo" optimistic-lock="true" type="int" unique="false">
+            <column name="tipo" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="sancion" optimistic-lock="true" type="double" unique="false">
+            <column name="sancion" not-null="true" precision="22" scale="0"/>
+        </property>
+    </class>
+</hibernate-mapping>

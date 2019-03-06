@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 07-feb-2019 17:27:07 by Hibernate Tools 5.2.8.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="multas" dynamic-insert="false" dynamic-update="false" mutable="true" name="jdbc.Conductor" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="conductor">
+        <id name="nif" type="string">
+            <column length="9" name="NIF"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="nombre" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="nombre" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="apellidos" optimistic-lock="true" type="string" unique="false">
+            <column length="200" name="apellidos" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="direccion" optimistic-lock="true" type="string" unique="false">
+            <column length="200" name="direccion" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="poblacion" optimistic-lock="true" type="string" unique="false">
+            <column length="200" name="poblacion"/>
+        </property>
+        <property generated="never" lazy="false" name="provincia" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="provincia"/>
+        </property>
+        <property generated="never" lazy="false" name="telefono" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="telefono"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="vehiculos" optimistic-lock="true" sort="unsorted" table="vehiculo">
+            <key on-delete="noaction">
+                <column length="9" name="NIF" not-null="true"/>
+            </key>
+            <one-to-many class="jdbc.Vehiculo" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>
